@@ -1,0 +1,65 @@
+USE master
+CREATE DATABASE ISILSOFTFinal
+
+USE ISILSOFTFinal
+
+CREATE TABLE Usuario (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    correo NVARCHAR(255) UNIQUE NOT NULL,
+    nombre NVARCHAR(255) NOT NULL,
+    apellidoPaterno NVARCHAR(255) NOT NULL,
+    apellidoMaterno NVARCHAR(255),
+    direccion NVARCHAR(255),
+    password NVARCHAR(255) NOT NULL,
+    activo BIT NOT NULL
+);
+GO
+-- Insertar un dato en la tabla Usuario
+INSERT INTO Usuario (correo, nombre, apellidoPaterno, apellidoMaterno, direccion, password, activo)
+VALUES ('ejemplo1@correo.com', 'Sergio', 'Alessio', 'Ramires', 'Jr. Ayacucho', 'password0', 1);
+
+
+SELECT *
+FROM Colaborador
+
+
+
+CREATE TABLE Tienda (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    direccion NVARCHAR(255) NOT NULL,
+    distrito NVARCHAR(255) NOT NULL,
+    aforo INT,
+    codColaborador INT FOREIGN KEY REFERENCES Colaborador(id)
+);
+GO
+
+CREATE TABLE Colaborador (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    nombres NVARCHAR(255) NOT NULL,
+    apellidoPaterno NVARCHAR(255) NOT NULL,
+    apellidoMaterno NVARCHAR(255),
+    dni NVARCHAR(20) UNIQUE NOT NULL
+);
+GO
+
+ ALTER TABLE tbTienda ADD CONSTRAINT tbTienda_FK FOREIGN KEY (tbIdColaborador) REFERENCES tbColaborador(tbIdColaborador)
+
+ select * from tbColaborador
+ select * from tbTienda
+
+
+-- Insertar datos en la tabla Colaborador
+INSERT INTO Colaborador (nombres, apellidoPaterno, apellidoMaterno, dni)
+VALUES 
+    ('Juan', 'González', 'Pérez', '12345678'),
+    ('María', 'Martínez', 'López', '87654321'),
+    ('Pedro', 'Sánchez', 'Ramírez', '13579246');
+
+-- Insertar datos en la tabla Tienda
+INSERT INTO Tienda (direccion, distrito, aforo, codColaborador)
+VALUES 
+    ('Calle Principal 123', 'Centro', 100, 1),
+    ('Avenida Secundaria 456', 'Norte', 150, 2),
+    ('Calle Residencial 789', 'Sur', 120, 3);
+
+

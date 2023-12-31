@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Nueva Tienda</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    form {
+      width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input, select {
+      padding: 8px 10px;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 8px 16px;
+      border: 1px solid #ddd;
+      background-color: #eee;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    button:hover {
+      background-color: #ccc;
+    }
+
+    select {
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Nueva Tienda</h1>
+
+  <form method="POST" th:action="@{/Tienda/crearTienda}" th:object="${objTienda}">
+    <label for="direccion">Dirección:</label>
+    <input type="text" id="direccion" th:field="*{direccion}" placeholder="Ingresar dirección" />
+
+    <label for="distrito">Distrito:</label>
+    <input type="text" id="distrito" th:field="*{distrito}" placeholder="Ingresar distrito" />
+
+    <label for="aforo">Aforo:</label>
+    <input type="number" id="aforo" th:field="*{aforo}" placeholder="Ingresar aforo" />
+
+    <label for="jefe">Jefe de Tienda:</label>
+    <select id="jefe" th:field="*{jefe}">
+      <option th:each="jefe: ${listaJefe}" th:value="${jefe.id}" th:text="${jefe.nombres}"></option>
+    </select>
+
+    <button type="submit">Guardar</button>
+  </form>
+</body>
+</html>

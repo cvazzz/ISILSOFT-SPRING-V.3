@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Gestión de Tiendas</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  form {
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
+  button {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    background-color: #eee;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #ccc;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+  }
+
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #eee;
+    font-weight: bold;
+  }
+
+  .fab {
+    color: #999;
+  }
+</style>
+</head>
+<body>
+<h1>Gestión de Tiendas</h1>
+
+<form th:action="@{/Tienda/buscarxdistri}" method="get">
+  Distrito <input type="text" th:name="distrito">
+  <button>Buscar</button>
+</form>
+<form th:action="@{/Tienda/nuevaTienda}" method="POST">
+  <button type="submit">Nueva Tienda</button>
+</form>
+
+<table class="table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Dirección</th>
+      <th>Distrito</th>
+      <th>Aforo</th>
+    </tr>
+  </thead>
+        <tbody>
+           <tr th:each="listTienda: ${listTienda}">
+            
+            <td th:text="${listTienda.id}"><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong></strong></td>
+            <td th:text="${listTienda.direccion}">Albert Cook</td>
+            <td th:text="${listTienda.distrito}">Albert Cook</td>
+            <td th:text="${listTienda.aforo}">Albert Cook</td>   
+           </tr>
+          </tbody>
+</table>
+
+</body>
+</html>

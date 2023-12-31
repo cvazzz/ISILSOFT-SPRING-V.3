@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Recuperar Contraseña</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    form {
+      width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input {
+      padding: 8px 10px;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 8px 16px;
+      border: 1px solid #ddd;
+      background-color: #eee;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    button:hover {
+      background-color: #ccc;
+    }
+
+    .error {
+      color: red;
+      font-weight: normal;
+    }
+  </style>
+</head>
+<body>
+  <h1>Recuperar Contraseña</h1>
+
+  <form method="POST" th:action="@{/home/validarCorreo}" >
+    <label for="correo">Email:</label>
+    <input type="email" id="correo" th:name="correo" required />
+
+    <div th:if="${mensaje}" class="error">
+ 
+ 
+    </div>
+
+    <label for="newContrasenha">Nueva Contraseña:</label>
+    <input type="password" id="newContrasenha" th:name="newContrasenha" required />
+
+    <label for="confContrasenha">Repita Nueva Contraseña:</label>
+    <input type="password" id="confContrasenha" th:name="confContrasenha" required />
+
+    <button type="submit">Recuperar Contraseña</button>
+  </form>
+</body>
+</html>
